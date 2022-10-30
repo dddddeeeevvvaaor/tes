@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Coding Rakitan</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="kata">
+            <p>Gambar yang dipilih nantinya akan muncul dibawah ini.</p>
+        </div>
+        <div class="image">
+            <img src="no-image.png" id="gambar">
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        var tm_pilih = document.getElementById('pilih');
+        var file = document.getElementById('file');
+        tm_pilih.addEventListener('click', function() {
+            file.click();
+        })
+        file.addEventListener('change', function() {
+            gambar(this);
+        })
+
+        function gambar(a) {
+            if (a.files && a.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('gambar').src = e.target.result;
+                }
+                reader.readAsDataURL(a.files[0]);
+            }
+
+        }
+    </script>
+</body>
+
+</html>
